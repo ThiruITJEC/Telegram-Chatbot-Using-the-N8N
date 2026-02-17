@@ -1,0 +1,141 @@
+{
+  "name": "Telegram Chatbot",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        80,
+        -80
+      ],
+      "id": "b6500516-b2bf-4393-9982-b130f6f52e9c",
+      "name": "Telegram Trigger",
+      "webhookId": "2e95cab1-5ceb-4f76-8e24-8cf4f058454e",
+      "credentials": {
+        "telegramApi": {
+          "id": "rreXId1aFFDCWTvm",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message.text }}",
+        "options": {
+          "systemMessage": "You are aAct as a Global News anchor or correspondent. Respond to the following chat in a neutral, professional, and authoritative news tone. Present the information clearly and concisely, as if delivering a breaking news update or an official news report. Avoid casual language, opinions, or emojis. Maintain journalistic objectivity, clarity, and global relevance. helpful assistant"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        416,
+        -80
+      ],
+      "id": "0c0b1bde-4c1b-4c31-835e-1d0daa64a26d",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        512,
+        176
+      ],
+      "id": "6cc45548-44b1-4131-b36b-3a284b57ff99",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "aoOX7ptP2NsxXDnE",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        816,
+        -80
+      ],
+      "id": "c134d52b-677a-419a-98ae-cf02d5af59bc",
+      "name": "Send a text message",
+      "webhookId": "3c5ad240-6016-4486-abff-3e0002c6e8da",
+      "credentials": {
+        "telegramApi": {
+          "id": "rreXId1aFFDCWTvm",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "61377058-42e1-4a2a-be10-ab40703856cf",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "abd80857954d968c74c4585e0d1d40d0f542804a8edae07afbe3f56edfa5c857"
+  },
+  "id": "gsmgEBk28n8zaXLJ",
+  "tags": []
+}
