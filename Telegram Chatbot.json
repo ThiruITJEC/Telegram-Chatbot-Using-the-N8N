@@ -16,10 +16,10 @@
       ],
       "id": "b6500516-b2bf-4393-9982-b130f6f52e9c",
       "name": "Telegram Trigger",
-      "webhookId": "2e95cab1-5ceb-4f76-8e24-8cf4f058454e",
+      "webhookId": "REMOVED_WEBHOOK_ID",
       "credentials": {
         "telegramApi": {
-          "id": "rreXId1aFFDCWTvm",
+          "id": "REMOVED_CREDENTIAL_ID",
           "name": "Telegram account"
         }
       }
@@ -61,7 +61,7 @@
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
-          "id": "aoOX7ptP2NsxXDnE",
+          "id": "REMOVED_CREDENTIAL_ID",
           "name": "n8n free OpenAI API credits"
         }
       }
@@ -80,10 +80,10 @@
       ],
       "id": "c134d52b-677a-419a-98ae-cf02d5af59bc",
       "name": "Send a text message",
-      "webhookId": "3c5ad240-6016-4486-abff-3e0002c6e8da",
+      "webhookId": "REMOVED_WEBHOOK_ID",
       "credentials": {
         "telegramApi": {
-          "id": "rreXId1aFFDCWTvm",
+          "id": "REMOVED_CREDENTIAL_ID",
           "name": "Telegram account"
         }
       }
@@ -124,17 +124,17 @@
         ]
       ]
     }
-  },
+  ],
   "active": false,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "61377058-42e1-4a2a-be10-ab40703856cf",
+  "versionId": "REMOVED_VERSION_ID",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "abd80857954d968c74c4585e0d1d40d0f542804a8edae07afbe3f56edfa5c857"
+    "instanceId": "REMOVED_INSTANCE_ID"
   },
   "id": "gsmgEBk28n8zaXLJ",
   "tags": []
